@@ -1,0 +1,1 @@
+import SwcButton from './lib/Button.svelte';

@@ -7,7 +7,8 @@
     "src/styles.css"
   ],
   "exports": {
-    ".": "./dist/swc-components.iife.js",
+    "./formComponents": "./dist/formComponents.js",
+    "./buttonComponents": "./dist/buttonComponents.js",
     "./dist/": "./dist/"
   },
   "scripts": {

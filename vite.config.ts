@@ -8,16 +8,15 @@ import { copy } from 'vite-plugin-copy'
 export default defineConfig({
   resolve: { alias: { $lib: '/src' } },
   build: {
-    lib: {
-      name: 'SwcComponents',
-      entry: 'src/main.ts',
-      formats: ['iife'],
-      fileName: 'swc-components'
-    },
     rollupOptions: {
       input: {
-        formComponents: 'src/form-components.js',
-        buttonComponents: 'src/button-components.js',
+        formComponents: 'src/form-components.ts',
+        buttonComponents: 'src/button-components.ts',
+      },
+      output: {
+        inlineDynamicImports: false,
+        dir: 'dist',
+        format: 'esm'
       },
       plugins: [
         copy({
