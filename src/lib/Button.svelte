@@ -1,12 +1,17 @@
 <svelte:options customElement="swc-button"/>
 
-<button class={getClasses()}>{@html innerText}</button>
+<button on:click={handleClick} class={getClasses()} disabled='{disabled}'>{@html innerText}</button>
 
 <script lang="ts">
-    export let innerText = ''
-    export let size = 'large' | 'medium' | 'small';
-    export let type = 'ghost' | 'link' | 'normal';
+    import { createEventDispatcher } from 'svelte';
+    import type { Size, ButtonType } from '../types';
 
+    export let innerText = ''
+    export let size: Size = 'medium';
+    export let type: ButtonType = 'normal';
+    export let disabled: string;
+
+    const dispatch = createEventDispatcher();   
 
     const getClasses = () => {
         let classes = ''
@@ -19,7 +24,15 @@
             classes = classes.concat(" ", type);
         }
 
+        if (disabled === 'true') {
+            classes = classes.concat(" ", 'disabled');
+        }
+
         return classes;
+    };
+
+    const handleClick = () => {
+        dispatch('click', { message: 'Button clicked!' });
     };
 </script>
 
@@ -29,6 +42,7 @@
         font-size: 16px;
         cursor: pointer;
         font-weight: 500;
+        border: none;
     }
 
     .link {
@@ -42,6 +56,11 @@
         color: #1b95e0;
         background-color: transparent;
         border: none;
+
+        &.disabled {
+            cursor: default;
+            color: #9F9F9F !important;
+        }
     }
 
     .normal {
@@ -50,6 +69,12 @@
         font-weight: 600;
         border-radius: 7px;
         background-color: #2186eb;
+
+        &.disabled {
+            cursor: default;
+            background-color: #DFDFDF !important;
+            color: #9F9F9F !important;
+        }
     }
 
     .large {

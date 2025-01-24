@@ -9,9 +9,17 @@
   <body>
     <div id="app"></div>
     
-    <swc-button innerText="Small Ghost Button" size="small" type="ghost"></swc-button>
+    <swc-button innerText="Small Ghost Button" size="small" type="ghost" on:click={handleButtonClick}></swc-button>
     
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
+
+<script>
+      const button = document.querySelector('swc-button');
+      
+      button.addEventListener('click', (event) => {
+        console.log('Custom event received:', event);
+      });
+</script>
   
