@@ -41,18 +41,11 @@
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-size: 16px;
         cursor: pointer;
-        font-weight: 500;
+        font-weight: 600;
         border: none;
     }
 
     .link {
-        color: #1b95e0;
-        background-color: transparent;
-        border: none;
-
-    }
-
-    .ghost {
         color: #1b95e0;
         background-color: transparent;
         border: none;
@@ -63,10 +56,21 @@
         }
     }
 
+    .ghost {
+        border: 1px solid #aaaaaa;
+        box-shadow: none;
+        color: #25355b;
+        border-radius: 7px;
+
+        &.disabled {
+            cursor: default;
+            color: #9F9F9F !important;
+        }
+    }
+
     .normal {
         background-color: #2f8eec;
         color: white;
-        font-weight: 600;
         border-radius: 7px;
         background-color: #2186eb;
 
@@ -79,6 +83,10 @@
 
     .large {
         padding: 30px;
+    }
+
+    .medium {
+        padding: 20px;
     }
 
     .small {
